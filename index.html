@@ -178,9 +178,10 @@
   }
   .intro .quote {
     font-family: "Noto Serif KR", serif;
-    font-size: 17px; line-height: 1.55; color: var(--ink);
+    font-size: clamp(14px, 4.5vw, 17px); line-height: 1.55; color: var(--ink);
     margin: 0 auto;
-    max-width: 30ch;
+    max-width: 100%;
+    word-break: keep-all;
   }
   .intro .quote .em { color: var(--red); font-weight: 700; }
   .intro .meta {
