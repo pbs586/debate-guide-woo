@@ -9,6 +9,7 @@
 <meta property="og:title" content="전국에서 소문난 토론 맛집, 우상호 후보의 쓰리스타급 토론 컬렉션" />
 <meta property="og:description" content="150만 강원도민 모두에게 도달하는 그날까지 — 함께 퍼날, 함께 응원!" />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="썸네일.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1025,7 +1026,7 @@ const DATA = [
     id: "g1-0511",
     date: "5.11 (월)",
     station: "G1",
-    label: "1차 강원 G1 토론회",
+    label: "1차 G1 강원도지사 후보 토론회",
     videos: [
       { n: 1, title: "여러분, 첫 TV토론 잘 보셨습니까!", desc: "공약파기, 사과 거부 이래도 됩니까?", id: "yj3iKHlXwII", stars: 3 },
       { n: 2, title: "김진태 공약파기! 사과할 생각 없어!", desc: "이정도면 뻔뻔이 선거전략?", id: "SDExD931IVU", stars: 3 },
@@ -1037,7 +1038,7 @@ const DATA = [
     id: "kbs-0513",
     date: "5.13 (수)",
     station: "KBS",
-    label: "KBS 강원 도지사 토론회",
+    label: "KBS 강원도지사 후보 토론회",
     videos: [
       { n: 1, title: "하다하다 할 게 없어서 남의 아버지 파묘?", desc: "얼마나 부정하고 싶으신 건지 감도 안 옵니다..", id: "f1bJKXHzuhA", stars: 3 },
       { n: 2, title: "공약 못 지킨 이유 물었더니 강릉시장 탓?", desc: "남탓만 하는 김진태 후보 .. 어떻게 해야 하나요", id: "B5IOQk9TECs", stars: 3 },
@@ -1049,7 +1050,7 @@ const DATA = [
     id: "mbc-0514",
     date: "5.14 (목)",
     station: "MBC",
-    label: "MBC 강원 도지사 토론회",
+    label: "MBC 강원도지사 후보 토론회",
     videos: [
       { n: 1, title: "허위사실 유포 고발이 야박..하다고요??", desc: "동서고속철도 허위사실 고발에 감정호소하는 김진태", id: "I9UT8QOcTWw", stars: 3 },
       { n: 2, title: "그때 왜 전화(콜백) 안 줬어요?", desc: "정무수석 전화 기다리던 김진태 도지사…", id: "YKsrMoADh0Y", stars: 3 },
@@ -1155,7 +1156,7 @@ function TOC({ data }) {
             if(el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 8, behavior: "smooth" });
           }}>
             <span className="toc-date">{s.date}</span>
-            <span className="toc-name">{s.station} 토론회</span>
+            <span className="toc-name">{s.station} 후보 토론회</span>
             <span className="toc-dots"></span>
             <span className="toc-count">{String(s.videos.length).padStart(2,"0")}편</span>
           </button>
