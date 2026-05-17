@@ -92,6 +92,22 @@
     body { padding: 24px 0; background: var(--bg-deep); }
     .page { border-radius: 4px; }
   }
+  /* 데스크탑(768px 이상)에서는 페이지 폭을 넓혀 2열 카드 그리드를 수용하고, 모바일에서는 기존 좁은 1열 레이아웃을 유지 */
+  @media (min-width: 768px) {
+    .page { max-width: 900px; }
+    .videos {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .video {
+      border-bottom: none;
+      border-right: 1px dashed var(--rule);
+    }
+    .video:nth-child(2n) { border-right: none; }
+    /* 2열 그리드 행 사이 구분선 */
+    .video:nth-child(n+3) { border-top: 1px dashed var(--rule); }
+  }
 
   /* sticky share bar */
   .sharebar {
