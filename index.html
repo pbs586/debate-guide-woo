@@ -129,8 +129,12 @@
   }
   .hero .kicker {
     text-align: center;
-    font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
-    color: var(--ink-soft); margin-bottom: 18px;
+    font-family: "Noto Serif KR", serif;
+    font-size: clamp(11px, 3.5vw, 14px);
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    word-break: keep-all;
   }
   .hero .stars {
     text-align: center; color: var(--gold);
@@ -139,20 +143,14 @@
   }
   .hero h1 {
     font-family: "Noto Serif KR", serif; font-weight: 900;
-    text-align: center; font-size: 38px; line-height: 1.15;
+    text-align: center; font-size: clamp(28px, 9vw, 38px); line-height: 1.15;
     margin: 0 0 6px; letter-spacing: -0.02em;
     color: var(--ink);
   }
   .hero h1 .accent { color: var(--gold-deep); font-style: italic; }
-  .hero .sub {
-    text-align: center;
-    font-family: "Noto Serif KR", serif;
-    font-size: 14px; color: var(--ink-soft); font-weight: 500;
-    margin-top: 8px;
-  }
   .hero .edition {
     text-align: center;
-    margin-top: 18px; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    margin-top: 18px; font-size: clamp(9px, 2.8vw, 11px); letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--ink-mute);
   }
 
@@ -251,11 +249,11 @@
     flex-shrink: 0;
     font-family: "Noto Serif KR", serif;
     font-weight: 900;
-    font-size: 38px;
+    font-size: clamp(30px, 9vw, 38px);
     line-height: 0.9;
     color: var(--gold-deep);
     font-style: italic;
-    width: 44px;
+    width: clamp(36px, 10vw, 44px);
   }
   .video-titlewrap { flex: 1; min-width: 0; }
   .video-stars {
@@ -264,7 +262,7 @@
   }
   .video-title {
     font-family: "Noto Serif KR", serif; font-weight: 700;
-    font-size: 19px; line-height: 1.3; color: var(--ink);
+    font-size: clamp(16px, 4.5vw, 19px); line-height: 1.3; color: var(--ink);
     margin: 0; letter-spacing: -0.01em;
     text-wrap: pretty;
   }
@@ -412,12 +410,13 @@
 
   /* legend bar */
   .legend {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 10px 16px; background: var(--bg-deep);
-    font-family: "DM Mono", monospace; font-size: 10px;
-    letter-spacing: 0.18em; text-transform: uppercase;
+    display: flex; align-items: center; justify-content: center; gap: clamp(4px, 1.5vw, 10px);
+    padding: 10px 12px; background: var(--bg-deep);
+    font-family: "DM Mono", monospace; font-size: clamp(8.5px, 2.2vw, 10px);
+    letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--ink-soft);
     border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
   }
   .legend .star { color: var(--gold); letter-spacing: 0.1em; }
 </style>
@@ -1001,7 +1000,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "guide",
   "showToc": true,
   "showStars": true,
-  "kicker": "DEBATE GUIDE · 2026"
+  "kicker": "— 우상호 후보의 쓰리스타급 토론 컬렉션 —"
 }/*EDITMODE-END*/;
 
 const DATA = [
@@ -1206,8 +1205,7 @@ function App() {
         <div className="kicker">{t.kicker}</div>
         <div className="stars">★ ★ ★</div>
         <h1>전국에서 소문난<br/><span className="accent">토론 맛집</span></h1>
-        <div className="sub">— 우상호 후보의 쓰리스타급 토론 컬렉션 —</div>
-        <div className="edition">강원도지사 · 2026 EDITION</div>
+        <div className="edition">강원도지사 후보 · 2026 EDITION</div>
       </header>
 
       <section className="intro">
@@ -1264,8 +1262,9 @@ function App() {
           />
         </TweakSection>
         <TweakSection title="구성">
-          <TweakToggle label="목차 노출" checked={t.showToc} onChange={(v)=>setTweak("showToc", v)} />
-          <TweakToggle label="별점 표시" checked={t.showStars} onChange={(v)=>setTweak("showStars", v)} />
+          {/* TweakToggle 컴포넌트는 내부적으로 value 프로퍼티를 통해 활성화 상태를 제어하므로, HTML 기본 checked 속성 대신 value를 사용하여 올바른 스위치 UI 상태(온/오프 시각 피드백)가 렌더링되도록 합니다. */}
+          <TweakToggle label="목차 노출" value={t.showToc} onChange={(v)=>setTweak("showToc", v)} />
+          <TweakToggle label="별점 표시" value={t.showStars} onChange={(v)=>setTweak("showStars", v)} />
           <TweakText label="상단 키커" value={t.kicker} onChange={(v)=>setTweak("kicker", v)} />
         </TweakSection>
       </TweaksPanel>
